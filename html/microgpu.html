@@ -515,7 +515,12 @@ For front-facing triangles (negative dot product), the module normalizes the fac
         <h4>SRAM Macros</h4> <p> Yun-Rong Du </p>
 
       <h3>System Modules</h3>
-        <h4>Scan Chain</h4> <p> Fengze Zhong </p>
+        <h4>Scan Chain</h4> <p> The scan chain provides the external access point to the on-chip memories and configuration registers. 
+			It is used to load model information before the processor starts, and to configure modules such as the Clock Generator and Test FSM. 
+			The chain consists of 78 cells, each mapped to a specific memory identifier, address pins, data pins, control signal or register bits, and uses mem_clk to shift data without timing violations safely. 
+            The memories that the scan chain can configure are Vertex Memory, Index Memory and Colour Memory.
+		    The IO signals that are provided are scan_in: Serially shifts data into the scan chain (write path). scan_out: Serially shifts data out of the scan chain (read path).
+		    scan_i0o1: Selects direction: 0 = scan-in, 1 = scan-out. phi / phib: Two non-overlapping clocks used to safely shift scan cells. load: Loads all scan-cell latch values into the actual memory/register ports.                      </p>
         <h4>Test FSM</h4> <p> Yuxi Zhang </p>
         <h4>Clock Generators</h4> 
 	        <p> We use this module to generate the internal clocks required by the system by configuring two parameters, fc and div. 
